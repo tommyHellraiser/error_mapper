@@ -1,3 +1,6 @@
+# v0.2.1 (2023-09-02)
+- Added support for chrono crate
+- Added chrono support feature
 
 # v0.2.0 (2023-09-02)
 - Restructured into better suited filenames
