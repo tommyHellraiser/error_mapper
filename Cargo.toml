@@ -6,6 +6,8 @@ authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]
 description = "This crate was created to avoid the use of the standard Error, and allow a more simple usage of error handling"
 rust-version = "1.72.0"
+readme = "README.md"
+repository = "https://github.com/tommyHellraiser/error_mapper"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
