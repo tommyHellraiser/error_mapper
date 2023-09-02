@@ -4,5 +4,5 @@ Small crate to handle errors more easily. Simply include it in the dependencies 
 will include errors from different crates.
 
 ## Currently supported crates:
- - mysql_async (v0.32.2)  -> https://crates.io/crates/mysql_async
- - chrono (v0.4.28) -> https://crates.io/crates/chrono
+ - mysql_async (v0.32.2)  -> https://crates.io/crates/mysql_async/0.32.2
+ - chrono (v0.4.28) -> https://crates.io/crates/chrono/0.4.28
