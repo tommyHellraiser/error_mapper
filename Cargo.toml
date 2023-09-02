@@ -8,6 +8,7 @@ description = "This crate was created to avoid the use of the standard Error, an
 rust-version = "1.72.0"
 readme = "README.md"
 repository = "https://github.com/tommyHellraiser/error_mapper"
+categories = ["config", "data-structures", "development-tools", "rust-patterns"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
