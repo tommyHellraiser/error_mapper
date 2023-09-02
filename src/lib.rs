@@ -1,5 +1,5 @@
 mod macros;
-mod errors_data;
+mod errors;
 
-pub use errors_data::structs::{TheResult, TheError, TheErrorType};
-pub use errors_data::error_codes::SystemErrorCodes;
+pub use errors::the_error::{TheResult, TheError, TheErrorType};
+pub use errors::system_error_codes::SystemErrorCodes;

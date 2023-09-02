@@ -1,6 +1,6 @@
 [package]
-name = "the-error"
-version = "0.1.0"
+name = "error_mapper"
+version = "0.2.0"
 edition = "2021"
 authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]
@@ -12,3 +12,7 @@ description = "This crate was created to avoid the use of the standard Error, an
 chrono = { version = "0.4.28"}
 lazy_static = "1.4.0"
 mysql_async = { version = "0.32.2", features = ["default"]}
+
+[features]
+mysql_async = []
+full = ["mysql_async"]
