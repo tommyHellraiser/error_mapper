@@ -1,6 +1,6 @@
 
 #[macro_export]
-macro_rules! new_error {
+macro_rules! map_to_new_error {
     ($error:expr) => {
 
         $crate::TheError {

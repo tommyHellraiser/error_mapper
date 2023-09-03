@@ -1,3 +1,9 @@
+
+# v0.2.2 (2023-09-02)
+- Changed the name of the `new_error!` macro into `map_to_new_error!`
+- Added support to display errors from the chrono crate
+- Updated readme with example
+
 # v0.2.1 (2023-09-02)
 - Added support for chrono crate
 - Added chrono support feature
