@@ -1,4 +1,7 @@
 
+# v0.2.4 (2023-09-03)
+- Added documentation to structs, functions and macros
+
 # v0.2.3 (2023-09-03)
 - Added support for tokio crate
 - Changed the place where the features are checked for easier readability

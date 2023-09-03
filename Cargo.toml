@@ -1,10 +1,10 @@
 [package]
 name = "error_mapper"
-version = "0.2.3"
+version = "0.2.4"
 edition = "2021"
 authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]
-description = "This crate was created to avoid the use of the standard Error, and allow a more simple usage of error handling"
+description = "Simple and standardized Results and Errors handling accross all your projects"
 rust-version = "1.72.0"
 readme = "README.md"
 repository = "https://github.com/tommyHellraiser/error_mapper"
