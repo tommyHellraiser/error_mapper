@@ -1,6 +1,6 @@
 [package]
 name = "error_mapper"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
 authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]
@@ -14,7 +14,6 @@ categories = ["config", "data-structures", "development-tools", "rust-patterns"]
 
 [dependencies]
 chrono = { version = "0.4.28"}
-lazy_static = "1.4.0"
 mysql_async = { version = "0.32.2", features = ["default"]}
 
 [features]
