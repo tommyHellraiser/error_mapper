@@ -3,7 +3,7 @@
 Small crate to handle errors and results more easily. Simply include it in the dependencies section using the latest
 available version and enable the features that will include mapped errors from different crates.
 
-## Currently supported crates:
+## Error mapping from the following crates is currently supported:
  - mysql_async (v0.32.2)  -> https://crates.io/crates/mysql_async/0.32.2
  - chrono (v0.4.28) -> https://crates.io/crates/chrono/0.4.28
 
