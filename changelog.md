@@ -1,4 +1,8 @@
 
+# v0.2.3 (2023-09-03)
+- Added support for tokio crate
+- Changed the place where the features are checked for easier readability
+
 # v0.2.2 (2023-09-02)
 - Changed the name of the `new_error!` macro into `map_to_new_error!`
 - Added support to display errors from the chrono crate

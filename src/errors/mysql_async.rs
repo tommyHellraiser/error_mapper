@@ -1,7 +1,6 @@
 use mysql_async::{DriverError, Error, IoError, ServerError, UrlError};
 use crate::{SystemErrorCodes, TheErrorType};
 
-#[cfg(feature = "mysql_async")]
 impl From<Error> for TheErrorType {
     fn from(value: Error) -> Self {
         let error_type;
@@ -35,7 +34,6 @@ impl From<Error> for TheErrorType {
     }
 }
 
-#[cfg(feature = "mysql_async")]
 impl From<DriverError> for SystemErrorCodes {
     fn from(value: DriverError) -> Self {
         match value {
@@ -65,7 +63,6 @@ impl From<DriverError> for SystemErrorCodes {
     }
 }
 
-#[cfg(feature = "mysql_async")]
 impl From<IoError> for SystemErrorCodes {
     fn from(value: IoError) -> Self {
         match value {
@@ -75,13 +72,12 @@ impl From<IoError> for SystemErrorCodes {
     }
 }
 
-#[cfg(feature = "mysql_async")]
 impl From<ServerError> for SystemErrorCodes {
     fn from(_: ServerError) -> Self {
         SystemErrorCodes::ServerError
     }
 }
-#[cfg(feature = "mysql_async")]
+
 impl From<UrlError> for SystemErrorCodes {
     fn from(value: UrlError) -> Self {
         match value {

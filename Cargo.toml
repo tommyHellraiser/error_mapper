@@ -1,6 +1,6 @@
 [package]
 name = "error_mapper"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2021"
 authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]
@@ -10,7 +10,6 @@ readme = "README.md"
 repository = "https://github.com/tommyHellraiser/error_mapper"
 categories = ["config", "data-structures", "development-tools", "rust-patterns"]
 license = "MIT"
-license-file = "LICENSE.txt"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -20,6 +19,7 @@ mysql_async = { version = "0.32.2", features = ["default"]}
 tokio = { version = "1.32.0", features = ["full"]}
 
 [features]
-full = ["mysql_async", "chrono"]
+full = ["mysql_async", "chrono", "tokio"]
 mysql_async = []
 chrono = []
+tokio = []
