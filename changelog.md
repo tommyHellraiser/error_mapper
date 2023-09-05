@@ -1,3 +1,7 @@
+# v0.2.5 (2023-09-04)
+- Added support for std Rust errors
+- Changed error type in tokio support 
+- Removed conflicting tokio error definition
 
 # v0.2.4 (2023-09-03)
 - Added documentation to structs, functions and macros

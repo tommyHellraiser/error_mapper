@@ -1,6 +1,6 @@
 [package]
 name = "error_mapper"
-version = "0.2.4"
+version = "0.2.5"
 edition = "2021"
 authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]
@@ -23,3 +23,4 @@ full = ["mysql_async", "chrono", "tokio"]
 mysql_async = []
 chrono = []
 tokio = []
+no_std = []

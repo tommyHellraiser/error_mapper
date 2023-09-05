@@ -4,6 +4,7 @@ Small crate to handle errors and results more easily. Simply include it in the d
 available version and enable the features that will include mapped errors from different crates.
 
 ## Error mapping from the following crates is currently supported:
+ - std Rust errors (rustc v1.72.0 on Windows OS)
  - mysql_async (v0.32.2)  -> https://crates.io/crates/mysql_async/0.32.2
  - chrono (v0.4.28) -> https://crates.io/crates/chrono/0.4.28
  - tokio (v1.32.0) -> https://crates.io/crates/tokio/1.32.0
@@ -12,6 +13,7 @@ available version and enable the features that will include mapped errors from d
 
 The features for this crate are determined by the external crates supported. If you want to use the mapping for tokio
 for example, add the feature `"tokio"`, the same way with `chrono`, or any other crate you want to map.
+The only error support that'll be loaded by default and cannot be disabled is the support for std Rust errors.
 
 To use only the functions and the TheResult type, add to dependencies with no features, and to include mapping for every 
 crate available, use the `full` feature.

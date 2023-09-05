@@ -3,11 +3,11 @@
 #[derive(Default)]
 #[allow(dead_code)]
 pub enum LogLevel {
-    FATAL,
-    ERROR,
-    WARNING,
+    Fatal,
+    Error,
+    Warning,
     #[default]
-    INFORMATION,
-    DEBUG,
-    TRACE
+    Information,
+    Debug,
+    Trace
 }

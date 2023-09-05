@@ -1,5 +1,6 @@
 pub mod the_error;
 pub mod system_error_codes;
+pub mod rust_errors;
 #[cfg(feature = "mysql_async")]
 pub mod mysql_async;
 #[cfg(feature = "chrono")]
