@@ -498,6 +498,7 @@ name = "error_mapper"
 version = "0.2.5"
 dependencies = [
  "chrono",
+ "lazy_static",
  "mysql_async",
  "tokio",
 ]
