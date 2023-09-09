@@ -1,3 +1,8 @@
+# v0.2.6 (2023-09-09)
+- Changed required rustc version from 1.72.0 to 1.71.1
+- Changed tokio version to 1.29.1
+- Changed chrono version to 0.4.26
+
 # v0.2.5 (2023-09-04)
 - Added support for std Rust errors
 - Changed error type in tokio support 

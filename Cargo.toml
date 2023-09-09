@@ -1,6 +1,6 @@
 [package]
 name = "error_mapper"
-version = "0.2.5"
+version = "0.2.6"
 edition = "2021"
 authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]
@@ -14,10 +14,10 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-chrono = { version = "0.4.28"}
+chrono = { version = "0.4.26"}
 lazy_static = "1.4.0"
 mysql_async = { version = "0.32.2", features = ["default"]}
-tokio = { version = "1.32.0", features = ["full"]}
+tokio = { version = "1.29.1", features = ["full"]}
 
 [features]
 full = ["mysql_async", "chrono", "tokio"]
