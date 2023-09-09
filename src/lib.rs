@@ -6,4 +6,5 @@ mod logger;
 
 pub use errors::the_error::{TheResult, TheError, TheErrorType};
 pub use errors::system_error_codes::SystemErrorCodes;
+pub use logger::the_logger::{TheLogger, TheLoggerConfig};
 

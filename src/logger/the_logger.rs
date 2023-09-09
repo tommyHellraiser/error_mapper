@@ -23,9 +23,51 @@ pub struct TheLogger {
     config: RwLock<TheLoggerConfig>
 }
 
-#[derive(Default)]
-struct TheLoggerConfig {
+#[derive(Default, Debug)]
+pub struct TheLoggerConfig {
+    date_config: TheDateConfig,
+    time_config: TheTimeConfig,
+    format_config: TheFormatConfig,
+    misc_config: TheMiscConfig
+}
 
+#[derive(Default, Debug)]
+struct TheDateConfig {
+    hide_years: bool,
+    hide_months: bool,
+    hide_days: bool,
+}
+
+#[derive(Default, Debug)]
+struct TheTimeConfig {
+    hide_hours: bool,
+    hide_minutes: bool,
+    hide_seconds: bool,
+    hide_millisecs: bool
+}
+
+#[derive(Default, Debug)]
+struct TheFormatConfig {
+    //  TODO: implement this, pending to interpret format from string
+    //date_format: String
+    //  TODO: not implemented yet, pending to interpret format from string
+    //timestamp_format: String,
+}
+
+#[derive(Default, Debug)]
+struct TheMiscConfig {
+    hide_level: bool,
+    level_enclosure: TheEnclosureType,
+    hide_error_line: bool,
+    hide_error_column: bool
+}
+
+#[derive(Default, Debug)]
+pub enum TheEnclosureType {
+    #[default]
+    Square,
+    Curly,
+    Parenthesis
 }
 
 impl TheLogger {
@@ -34,63 +76,93 @@ impl TheLogger {
             config: RwLock::new(TheLoggerConfig::default())
         }
     }
+}
 
-    pub fn hide_date() {
-
+impl TheLoggerConfig {
+    pub fn new() -> Self {
+        Self {
+            date_config: TheDateConfig::default(),
+            time_config: TheTimeConfig::default(),
+            format_config: TheFormatConfig::default(),
+            misc_config: TheMiscConfig::default()
+        }
     }
 
-    pub fn hide_years() {
-
+    pub fn hide_date(mut self) -> Self {
+        self.date_config.hide_years = true;
+        self.date_config.hide_months = true;
+        self.date_config.hide_days = true;
+        self
     }
 
-    pub fn hide_months() {
-
+    pub fn hide_years(mut self) -> Self{
+        self.date_config.hide_years = true;
+        self
     }
 
-    pub fn hide_days() {
-
+    pub fn hide_months(mut self) -> Self {
+        self.date_config.hide_months = true;
+        self
     }
 
-    pub fn hide_timestamp() {
-
+    pub fn hide_days(mut self) -> Self {
+        self.date_config.hide_days = true;
+        self
     }
 
-    pub fn timestamp_format() {
-
+    pub fn hide_timestamp(mut self) -> Self {
+        self.time_config.hide_hours = true;
+        self.time_config.hide_minutes = true;
+        self.time_config.hide_seconds = true;
+        self.time_config.hide_millisecs = true;
+        self
     }
 
-    pub fn hide_hours() {
-
+    pub fn timestamp_format(mut self) -> Self {
+        todo!()
     }
 
-    pub fn hide_minutes() {
-
+    pub fn hide_hours(mut self) -> Self {
+        self.time_config.hide_hours = true;
+        self
     }
 
-    pub fn hide_secs() {
-
+    pub fn hide_minutes(mut self) -> Self {
+        self.time_config.hide_minutes = true;
+        self
     }
 
-    pub fn hide_millisecs() {
-
+    pub fn hide_secs(mut self) -> Self {
+        self.time_config.hide_seconds = true;
+        self
     }
 
-    pub fn hide_level() {
-
+    pub fn hide_millisecs(mut self) -> Self {
+        self.time_config.hide_millisecs = true;
+        self
     }
 
-    pub fn level_with_square_brackets() {
-
+    pub fn hide_level(mut self) -> Self {
+        self.misc_config.hide_level = true;
+        self
     }
 
-    pub fn hide_error_line() {
-
+    pub fn level_enclosure(mut self, level_config: TheEnclosureType) -> Self {
+        self.misc_config.level_enclosure = level_config;
+        self
     }
 
-    pub fn hide_error_column() {
+    pub fn hide_error_line(mut self) -> Self {
+        self.misc_config.hide_error_line = true;
+        self
+    }
 
+    pub fn hide_error_column(mut self) -> Self {
+        self.misc_config.hide_error_column = true;
+        self
     }
 }
+
 
 
 /*
