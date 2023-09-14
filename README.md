@@ -26,9 +26,9 @@ The result enum is a customized `TheResult` type, which is an alias for `Result<
 pub struct TheError {
     pub error: TheErrorType,
     pub file: String,
-    pub location: String,
-    pub datestamp: String,
-    pub timestamp: String
+    pub location: (u32, u32),
+    pub datestamp: NaiveDate,
+    pub timestamp: NaiveTime
 }
 ```
 
@@ -47,7 +47,7 @@ bound to keep growing as more crates are added to `error_mapper`.
 This crate implements the `std::fmt::Display` trait for all its error data types. The output result of the fully
 displayed error will be similar to the following example:
 
-`src\data\db_conn.rs 9:23 @ 2023-09-02::22:26:40 -> Parse: URL parse error: relative URL without a base`
+`2023-09-14 T20:16:45.236734900 @ src\main.rs 5|29                               Parse: URL parse error: relative URL without a base`
 
 First the file where the error occurred is displayed, followed by the number of line and column. The next element 
 displayed is the date and time of the error for the local timezone (to log the date and time Utc::now() is used).

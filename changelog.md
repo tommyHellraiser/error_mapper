@@ -1,3 +1,11 @@
+# v0.3.0 (2023-09-14)
+- Reduced the size of the TheError type by using NaiveDate and NaiveTime, and integers for location
+- Fixed documentation generation errors
+- Implemented ``From<SystemErrorCodes>`` for ``TheErrorType``
+- Modified the Display format for the ``TheError``
+- Added more documentation to functions and traits
+- Deleted unused error types that were too specific
+
 # v0.2.6 (2023-09-09)
 - Changed required rustc version from 1.72.0 to 1.71.1
 - Changed tokio version to 1.29.1

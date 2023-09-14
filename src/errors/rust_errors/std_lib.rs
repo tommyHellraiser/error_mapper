@@ -243,24 +243,6 @@ impl From<std::num::TryFromIntError> for TheErrorType {
     }
 }
 
-impl From<std::os::windows::io::InvalidHandleError> for TheErrorType {
-    fn from(value: std::os::windows::io::InvalidHandleError) -> Self {
-        Self {
-            error_type: SystemErrorCodes::HandleError,
-            error_content: value.to_string()
-        }
-    }
-}
-
-impl From<std::os::windows::io::NullHandleError> for TheErrorType {
-    fn from(value: std::os::windows::io::NullHandleError) -> Self {
-        Self {
-            error_type: SystemErrorCodes::HandleError,
-            error_content: value.to_string()
-        }
-    }
-}
-
 impl From<std::path::StripPrefixError> for TheErrorType {
     fn from(value: std::path::StripPrefixError) -> Self {
         Self {

@@ -1,38 +1,27 @@
 use std::fmt::{Display, Formatter};
+use crate::TheErrorType;
 
+/// Main enum that contains all the possible **error types** that can be mapped from the
+/// supported crate's **origin errors**
 #[derive(Debug)]
 #[allow(dead_code)]
 pub enum SystemErrorCodes {
-    AddrInUse,
-    AddrNotAvailable,
-    AlreadyExists,
-    ArgumentListTooLong,
     BadDateFormat,
     BadCompressedPacketHeader,
     BorrowError,
-    BrokenPipe,
     CantParseServerVersion,
     ChannelError,
     CleartextPluginDisabled,
-    ConnectionAborted,
     ConnectionClosed,
     ConnectionRefused,
-    ConnectionReset,
     ConversionError,
-    CrossesDevices,
     DbConnectionError,
     DbConnectionTimedOut,
     Deadlock,
     DecodeError,
-    DirectoryNotEmpty,
     Empty,
     EnvironmentError,
-    ExecutableFileBusy,
     FeatureRequired,
-    FileError,
-    FileTooLarge,
-    FilesystemLoop,
-    FilesystemQuotaExceeded,
     FormatError,
     FromRow,
     FromValue,
@@ -40,7 +29,6 @@ pub enum SystemErrorCodes {
     HandleError,
     HostUnreachable,
     InitializeError,
-    Interrupted,
     Invalid,
     InvalidDateValue,
     InvalidData,
@@ -50,7 +38,6 @@ pub enum SystemErrorCodes {
     InvalidParamValue,
     InvalidPoolConstraints,
     Io,
-    IsADirectory,
     JoinError,
     LayoutError,
     LocalInfile,
@@ -63,16 +50,11 @@ pub enum SystemErrorCodes {
     NamedParamsForPositionalQuery,
     NamedPipesDisabled,
     NestedTransaction,
-    NetworkDown,
-    NetworkUnreachable,
     NoClientSslFlagFromServer,
     NoKeyFound,
-    NotADirectory,
     NotConnected,
     NotFound,
-    NotSeekable,
     Other,
-    OutOfMemory,
     OutOfRangeDateValue,
     Overflow,
     PacketOutOfOrder,
@@ -80,7 +62,6 @@ pub enum SystemErrorCodes {
     Parse,
     PermissionDenied,
     PoolDisconnected,
-    ReadOnlyFilesystem,
     ReadOnlyTransNotSupported,
     ReadWriteError,
     ResourceBusy,
@@ -89,7 +70,6 @@ pub enum SystemErrorCodes {
     SocketError,
     SyncError,
     SlowConnection,
-    StaleNetworkFileHandle,
     StmtParamsMismatch,
     StorageFull,
     SystemTimeError,
@@ -98,22 +78,32 @@ pub enum SystemErrorCodes {
     TimedOut,
     TimerError,
     Tls,
-    TooManyLinks,
-    Uncategorized,
-    UnexpectedEof,
     UnexpectedPacket,
     UnknownAuthPlugin,
     UnknownParameter,
-    UnstableErrorType,
     Unsupported,
-    UnsupportedScheme,
-    WouldBlock,
-    WriteZero,
     Zero
 }
 
+/// Display implementation for the **SystemErrorCodes** enum
+///
+/// Can't display a specific error message because some of the errors contained in this enum
+/// are derived from **multiple different error origins**.
+///
+/// Displaying a SystemErrorCodes enum will display the **error type** as a String instead
 impl Display for SystemErrorCodes {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{:?}", self)
+    }
+}
+
+/// Conversion from **SystemErrorCodes** to **TheErrorType** to generate a **TheError** struct
+/// using the **map_to_new_error!** macro
+impl From<SystemErrorCodes> for TheErrorType {
+    fn from(error: SystemErrorCodes) -> Self {
+        TheErrorType {
+            error_content: error.to_string(),
+            error_type: error,
+        }
     }
 }

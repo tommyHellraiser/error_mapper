@@ -1,4 +1,5 @@
 use std::fmt::{Display, Formatter};
+use chrono::{NaiveDate, NaiveTime};
 use crate::SystemErrorCodes;
 
 /// Alias to a Result<T, TheError> type, with TheError being a struct that contains extra details
@@ -11,25 +12,9 @@ pub type TheResult<T> = Result<T, TheError>;
 pub struct TheError {
     pub error: TheErrorType,
     pub file: String,
-    pub location: String,
-    pub datestamp: String,
-    pub timestamp: String
-}
-
-impl Display for TheError {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-
-        write!(f, "\n{} {} @ {}::{} -> {:?}: {}",
-               self.file,
-               self.location,
-               self.datestamp,
-               self.timestamp,
-               self.error.error_type,
-               self.error.error_content
-        ).expect("Couldn't display message!!");
-
-        Ok(())
-    }
+    pub location: (u32, u32),
+    pub datestamp: NaiveDate,
+    pub timestamp: NaiveTime
 }
 
 /// Smaller error struct to contain the **mapped error type** as a **SystemErrorCodes** enum
@@ -52,22 +37,40 @@ impl TheError {
     }
 
     /// **Returns** the location String in file-line-column format
-    pub fn get_location_info(&self) -> &String {
+    pub fn get_location_info(&self) -> &(u32, u32) {
         &self.location
     }
 
     /// **Returns** the error's NaiveDate datestamp as a String
-    pub fn get_datestamp(&self) -> &String {
+    pub fn get_datestamp(&self) -> &NaiveDate {
         &self.datestamp
     }
 
     /// **Returns** the error's NaiveTime timestamp as a String
-    pub fn get_timestamp(&self) -> &String {
+    pub fn get_timestamp(&self) -> &NaiveTime {
         &self.timestamp
     }
 
     /// **Returns** the error's datetime stamp as a String
     pub fn get_datetime(&self) -> String {
         format!("{} {}", &self.datestamp, &self.timestamp).to_string()
+    }
+}
+
+impl Display for TheError {
+    /// Formatter function to **display** the error in a easy to user manner
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+
+        write!(f, "{} T{} @ {} {}|{}\t\t\t\t{:?}: {}",
+            self.datestamp,
+            self.timestamp,
+            self.file,
+            self.location.0,
+            self.location.1,
+            self.error.error_type,
+            self.error.error_content
+        ).expect("Couldn't display message!!");
+
+        Ok(())
     }
 }
