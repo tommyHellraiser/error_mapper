@@ -9,6 +9,7 @@ pub type TheResult<T> = Result<T, TheError>;
 /// Struct that contains the **error** itself mapped within a **TheErrorType** struct, with its **error
 /// content** configured in the origin crate, the **file**, **location**, **datestamp** and
 /// **timestamp** data of when the error was remapped using the map_to_new_error! macro.
+#[derive(Debug)]
 pub struct TheError {
     pub error: TheErrorType,
     pub file: String,
@@ -19,6 +20,7 @@ pub struct TheError {
 
 /// Smaller error struct to contain the **mapped error type** as a **SystemErrorCodes** enum
 /// and the **error content** from the origin error
+#[derive(Debug)]
 pub struct TheErrorType {
     pub error_type: SystemErrorCodes,
     pub error_content: String,

@@ -1,3 +1,6 @@
+# v0.3.1 (2023-09-14)
+- TheError type now implements Debug trait
+
 # v0.3.0 (2023-09-14)
 - Reduced the size of the TheError type by using NaiveDate and NaiveTime, and integers for location
 - Fixed documentation generation errors
