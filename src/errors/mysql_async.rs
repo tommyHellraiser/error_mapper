@@ -85,7 +85,7 @@ impl From<UrlError> for SystemErrorCodes {
             UrlError::Invalid => {SystemErrorCodes::Invalid}
             UrlError::InvalidParamValue { .. } => {SystemErrorCodes::InvalidParamValue}
             UrlError::InvalidPoolConstraints { .. } => {SystemErrorCodes::InvalidPoolConstraints}
-            UrlError::Parse(_) => {SystemErrorCodes::Parse}
+            UrlError::Parse(_) => {SystemErrorCodes::ParseError }
             UrlError::UnknownParameter { .. } => {SystemErrorCodes::UnknownParameter}
             UrlError::UnsupportedScheme { .. } => {SystemErrorCodes::Unsupported}
         }

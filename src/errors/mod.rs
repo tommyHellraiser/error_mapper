@@ -7,3 +7,5 @@ pub mod mysql_async;
 pub mod chrono;
 #[cfg(feature = "tokio")]
 pub mod tokio;
+#[cfg(feature = "actix-web")]
+pub mod actix_web;

@@ -173,7 +173,7 @@ impl<T> From<std::io::IntoInnerError<T>> for TheErrorType {
 impl From<std::net::AddrParseError> for TheErrorType {
     fn from(value: std::net::AddrParseError) -> Self {
         Self {
-            error_type: SystemErrorCodes::Parse,
+            error_type: SystemErrorCodes::ParseError,
             error_content: value.to_string()
         }
     }
@@ -219,7 +219,7 @@ impl From<std::num::IntErrorKind> for TheErrorType {
 impl From<std::num::ParseFloatError> for TheErrorType {
     fn from(value: std::num::ParseFloatError) -> Self {
         Self {
-            error_type: SystemErrorCodes::Parse,
+            error_type: SystemErrorCodes::ParseError,
             error_content: value.to_string()
         }
     }
@@ -228,7 +228,7 @@ impl From<std::num::ParseFloatError> for TheErrorType {
 impl From<std::num::ParseIntError> for TheErrorType {
     fn from(value: std::num::ParseIntError) -> Self {
         Self {
-            error_type: SystemErrorCodes::Parse,
+            error_type: SystemErrorCodes::ParseError,
             error_content: value.to_string()
         }
     }
@@ -255,7 +255,7 @@ impl From<std::path::StripPrefixError> for TheErrorType {
 impl From<std::str::ParseBoolError> for TheErrorType {
     fn from(value: std::str::ParseBoolError) -> Self {
         Self {
-            error_type: SystemErrorCodes::Parse,
+            error_type: SystemErrorCodes::ParseError,
             error_content: value.to_string()
         }
     }
@@ -291,7 +291,7 @@ impl From<std::string::FromUtf8Error> for TheErrorType {
 impl From<std::string::ParseError> for TheErrorType {
     fn from(value: std::string::ParseError) -> Self {
         Self {
-            error_type: SystemErrorCodes::Parse,
+            error_type: SystemErrorCodes::ParseError,
             error_content: value.to_string()
         }
     }

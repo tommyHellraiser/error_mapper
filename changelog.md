@@ -1,3 +1,7 @@
+# v0.3.2 (2023-09-15)
+- Formatted the error display output
+- Support for actix-web errors is now available
+
 # v0.3.1 (2023-09-14)
 - TheError type now implements Debug trait
 

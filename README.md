@@ -8,6 +8,7 @@ available version and enable the features that will include mapped errors from d
  - mysql_async (v0.32.2)  -> https://crates.io/crates/mysql_async/0.32.2
  - chrono (v0.4.26) -> https://crates.io/crates/chrono/0.4.26
  - tokio (v1.29.1) -> https://crates.io/crates/tokio/1.29.1
+ - actix-web (v4.4.0) -> https://crates.io/crates/actix-web/4.4.0
 
 ## Features
 

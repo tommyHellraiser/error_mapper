@@ -63,7 +63,7 @@ impl Display for TheError {
     /// Formatter function to **display** the error in a easy to user manner
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
 
-        write!(f, "{} T{} @ {} {}|{}\t\t\t\t{:?}: {}",
+        write!(f, "{} T{}\t@ {} {}|{}\t\t\t\t{:?}: {}",
             self.datestamp,
             self.timestamp,
             self.file,
