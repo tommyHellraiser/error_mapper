@@ -9,7 +9,7 @@ pub type TheResult<T> = Result<T, TheError>;
 /// Struct that contains the **error** itself mapped within a **TheErrorType** struct, with its **error
 /// content** configured in the origin crate, the **file**, **location**, **datestamp** and
 /// **timestamp** data of when the error was remapped using the map_to_new_error! macro.
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct TheError {
     pub error: TheErrorType,
     pub file: String,
@@ -20,7 +20,7 @@ pub struct TheError {
 
 /// Smaller error struct to contain the **mapped error type** as a **SystemErrorCodes** enum
 /// and the **error content** from the origin error
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct TheErrorType {
     pub error_type: SystemErrorCodes,
     pub error_content: String,
@@ -56,6 +56,42 @@ impl TheError {
     /// **Returns** the error's datetime stamp as a String
     pub fn get_datetime(&self) -> String {
         format!("{} {}", &self.datestamp, &self.timestamp).to_string()
+    }
+
+    /// **Description**: Adds the error type to the error
+    pub fn with_type(mut self, error_type: SystemErrorCodes) -> Self {
+        self.error.error_type = error_type;
+        self
+    }
+
+    /// **Description**: Adds the error content to the error
+    pub fn with_content(mut self, error_content: String) -> Self {
+        self.error.error_content = error_content;
+        self
+    }
+
+    /// **Description**: Adds the file data to the error
+    pub fn with_file_data(mut self, file: String) -> Self {
+        self.file = file;
+        self
+    }
+
+    /// **Description**: Adds the location data to the error
+    pub fn with_location_data(mut self, location: (u32, u32)) -> Self {
+        self.location = location;
+        self
+    }
+
+    /// **Description**: Adds the datestamp data to the error
+    pub fn with_datestamp_data(mut self, datestamp: NaiveDate) -> Self {
+        self.datestamp = datestamp;
+        self
+    }
+
+    /// **Description**: Adds the timestamp data to the error
+    pub fn with_timestamp_data(mut self, timestamp: NaiveTime) -> Self {
+        self.timestamp = timestamp;
+        self
     }
 }
 

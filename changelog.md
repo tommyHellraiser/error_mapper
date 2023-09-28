@@ -1,3 +1,6 @@
+# v0.3.5 (2023-06-28)
+- Added construction functions to TheError
+
 # v0.3.4 (2023-09-28)
 - Added support for crates serde and serde_json
 

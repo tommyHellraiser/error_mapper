@@ -3,7 +3,7 @@ use crate::TheErrorType;
 
 /// Main enum that contains all the possible **error types** that can be mapped from the
 /// supported crate's **origin errors**
-#[derive(Debug)]
+#[derive(Debug, Default)]
 #[allow(dead_code)]
 pub enum SystemErrorCodes {
     BadDateFormat,
@@ -26,6 +26,7 @@ pub enum SystemErrorCodes {
     FormatError,
     FromRow,
     FromValue,
+    #[default]
     GenericError,
     HandleError,
     HostUnreachable,
