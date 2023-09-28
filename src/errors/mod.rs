@@ -11,3 +11,7 @@ pub mod tokio;
 pub mod actix_web;
 #[cfg(feature = "reqwest")]
 pub mod reqwest;
+#[cfg(feature = "serde_json")]
+pub mod serde_json;
+#[cfg(feature = "serde")]
+pub mod serde;

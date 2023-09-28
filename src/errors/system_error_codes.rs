@@ -72,6 +72,7 @@ pub enum SystemErrorCodes {
     ResourceBusy,
     SemaphoreError,
     ServerError,
+    SerializationError,
     SocketError,
     SyncError,
     SlowConnection,

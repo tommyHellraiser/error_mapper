@@ -10,6 +10,8 @@ available version and enable the features that will include mapped errors from d
  - tokio (v1.29.1) -> https://crates.io/crates/tokio/1.29.1
  - actix-web (v4.4.0) -> https://crates.io/crates/actix-web/4.4.0
  - reqwest (v0.11.20) -> https://crates.io/crates/reqwest/0.11.20
+ - serde (v1.0.188) -> https://crates.io/crates/serde/1.0.188
+ - serde_json (v1.0.107) -> https://crates.io/crates/serde_json/1.0.107
 
 ## Features
 

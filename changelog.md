@@ -1,3 +1,6 @@
+# v0.3.4 (2023-09-28)
+- Added support for crates serde and serde_json
+
 # v0.3.3 (2023-09-28)
 - Added support for crate reqwest v0.11.20
 

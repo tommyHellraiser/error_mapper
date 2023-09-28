@@ -759,13 +759,15 @@ dependencies = [
 
 [[package]]
 name = "error_mapper"
-version = "0.3.3"
+version = "0.3.4"
 dependencies = [
  "actix-web",
  "chrono",
  "lazy_static",
  "mysql_async",
  "reqwest",
+ "serde",
+ "serde_json",
  "tokio",
 ]
 
