@@ -1,3 +1,6 @@
+# v0.3.3 (2023-09-28)
+- Added support for crate reqwest v0.11.20
+
 # v0.3.2 (2023-09-15)
 - Formatted the error display output
 - Support for actix-web errors is now available

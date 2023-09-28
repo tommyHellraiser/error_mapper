@@ -9,6 +9,7 @@ available version and enable the features that will include mapped errors from d
  - chrono (v0.4.26) -> https://crates.io/crates/chrono/0.4.26
  - tokio (v1.29.1) -> https://crates.io/crates/tokio/1.29.1
  - actix-web (v4.4.0) -> https://crates.io/crates/actix-web/4.4.0
+ - reqwest (v0.11.20) -> https://crates.io/crates/reqwest/0.11.20
 
 ## Features
 
