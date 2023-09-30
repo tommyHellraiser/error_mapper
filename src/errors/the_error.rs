@@ -27,6 +27,23 @@ pub struct TheErrorType {
 }
 
 impl TheError {
+    /// **Description**: Creates a new error of TheError type, receiving as parameters the error
+    /// type and content, and capturing the file, location, datestamp and timestamp info
+    pub fn new(
+        error_type: SystemErrorCodes,
+        error_content: String
+    ) -> Self {
+        Self {
+            error: TheErrorType {
+                error_type,
+                error_content
+            },
+            file: file!().to_string(),
+            location: (line!(), column!()),
+            datestamp: chrono::Local::now().date_naive(),
+            timestamp: chrono::Local::now().time()
+        }
+    }
 
     /// **Returns** the SystemErrorCode associated with this error
     pub fn get_type(&self) -> &SystemErrorCodes {
@@ -99,7 +116,7 @@ impl Display for TheError {
     /// Formatter function to **display** the error in a easy to user manner
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
 
-        write!(f, "{} T{}\t@ {} {}|{}\t\t\t\t{:?}: {}",
+        write!(f, "\n{} T{}\t@ {} {}|{} =>\t{:?}: {}\n",
             self.datestamp,
             self.timestamp,
             self.file,
@@ -110,5 +127,14 @@ impl Display for TheError {
         ).expect("Couldn't display message!!");
 
         Ok(())
+    }
+}
+
+impl From<TheError> for TheErrorType {
+    fn from(value: TheError) -> Self {
+        Self {
+            error_type: value.error.error_type,
+            error_content: value.error.error_content
+        }
     }
 }

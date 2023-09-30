@@ -1,3 +1,8 @@
+# v0.3.6 (2023-09-30)
+- Added `new()` function for `TheError`
+- Added `From` implementation for `TheErrorType`
+- Restructured the `Display` output format for `TheError`
+
 # v0.3.5 (2023-06-28)
 - Added construction functions to TheError
 
