@@ -12,10 +12,10 @@ pub type TheResult<T> = Result<T, TheError>;
 #[derive(Debug, Default)]
 pub struct TheError {
     pub error: TheErrorType,
-    pub file: String,
-    pub location: (u32, u32),
-    pub datestamp: NaiveDate,
-    pub timestamp: NaiveTime
+    pub file: Option<String>,
+    pub location: Option<(u32, u32)>,
+    pub datestamp: Option<NaiveDate>,
+    pub timestamp: Option<NaiveTime>
 }
 
 /// Smaller error struct to contain the **mapped error type** as a **SystemErrorCodes** enum
@@ -38,10 +38,10 @@ impl TheError {
                 error_type,
                 error_content
             },
-            file: file!().to_string(),
-            location: (line!(), column!()),
-            datestamp: chrono::Local::now().date_naive(),
-            timestamp: chrono::Local::now().time()
+            file: None,
+            location: None,
+            datestamp: None,
+            timestamp: None
         }
     }
 
@@ -56,23 +56,35 @@ impl TheError {
     }
 
     /// **Returns** the location String in file-line-column format
-    pub fn get_location_info(&self) -> &(u32, u32) {
+    pub fn get_location_info(&self) -> &Option<(u32, u32)> {
         &self.location
     }
 
     /// **Returns** the error's NaiveDate datestamp as a String
-    pub fn get_datestamp(&self) -> &NaiveDate {
+    pub fn get_datestamp(&self) -> &Option<NaiveDate> {
         &self.datestamp
     }
 
     /// **Returns** the error's NaiveTime timestamp as a String
-    pub fn get_timestamp(&self) -> &NaiveTime {
+    pub fn get_timestamp(&self) -> &Option<NaiveTime> {
         &self.timestamp
     }
 
     /// **Returns** the error's datetime stamp as a String
-    pub fn get_datetime(&self) -> String {
-        format!("{} {}", &self.datestamp, &self.timestamp).to_string()
+    pub fn get_datetime(&self) -> Option<(String, String)> {
+        // format!("{} {}", &self.datestamp, &self.timestamp).to_string()
+        let date = if let Some(datestamp) = self.datestamp {
+            datestamp.to_string()
+        } else {
+            "".to_string()
+        };
+        let time = if let Some(timestamp) = self.timestamp {
+            timestamp.to_string()
+        } else {
+            "".to_string()
+        };
+
+        Some((date, time))
     }
 
     /// **Description**: Adds the error type to the error
@@ -89,42 +101,68 @@ impl TheError {
 
     /// **Description**: Adds the file data to the error
     pub fn with_file_data(mut self, file: String) -> Self {
-        self.file = file;
+        self.file = Some(file);
         self
     }
 
     /// **Description**: Adds the location data to the error
     pub fn with_location_data(mut self, location: (u32, u32)) -> Self {
-        self.location = location;
+        self.location = Some(location);
         self
     }
 
     /// **Description**: Adds the datestamp data to the error
     pub fn with_datestamp_data(mut self, datestamp: NaiveDate) -> Self {
-        self.datestamp = datestamp;
+        self.datestamp = Some(datestamp);
         self
     }
 
     /// **Description**: Adds the timestamp data to the error
     pub fn with_timestamp_data(mut self, timestamp: NaiveTime) -> Self {
-        self.timestamp = timestamp;
+        self.timestamp = Some(timestamp);
         self
+    }
+
+    /// **Description**: Allows the user to add the error type after creation
+    pub fn add_error_type(&mut self, error_type: SystemErrorCodes) {
+        self.error.error_type = error_type;
+    }
+
+    /// **Description**: Allows the user to add the error content after creation
+    pub fn add_error_content(&mut self, content: String) {
+        self.error.error_content = content;
+    }
+
+    /// **Description**: Allows the user to add the file data after creation
+    pub fn add_file_data(&mut self, file: String) {
+        self.file = Some(file);
+    }
+
+    /// **Description**: Allows the user to add the location data after creation
+    pub fn add_location_data(&mut self, location: (u32, u32)) {
+        self.location = Some(location);
+    }
+
+    /// **Description**: Allows the user to add the datestamp data after creation
+    pub fn add_datestamp_data(&mut self, datestamp: NaiveDate) {
+        self.datestamp = Some(datestamp);
+    }
+
+    /// **Description**: Allows the user to add the timestamp data after creation
+    pub fn add_timestamp_data(&mut self, timestamp: NaiveTime) {
+        self.timestamp = Some(timestamp);
     }
 }
 
 impl Display for TheError {
-    /// Formatter function to **display** the error in a easy to user manner
+    /// Formatter function to **display** the error in a simple manner.
+    ///
+    /// No overhead, just the error type and content. If the user needs more information and was
+    /// previously stored, it'll be inside TheError struct.
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
 
-        write!(f, "\n{} T{}\t@ {} {}|{} =>\t{:?}: {}\n",
-            self.datestamp,
-            self.timestamp,
-            self.file,
-            self.location.0,
-            self.location.1,
-            self.error.error_type,
-            self.error.error_content
-        ).expect("Couldn't display message!!");
+        write!(f, "{}: {}", self.error.error_type, self.error.error_content)
+            .expect("Couldn't display message!!");
 
         Ok(())
     }

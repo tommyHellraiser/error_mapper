@@ -51,7 +51,7 @@ bound to keep growing as more crates are added to `error_mapper`.
 This crate implements the `std::fmt::Display` trait for all its error data types. The output result of the fully
 displayed error will be similar to the following example:
 
-`2023-09-14 T20:16:45.236734900 @ src\main.rs 5|29                               Parse: URL parse error: relative URL without a base`
+``GenericError: This was the created error!!``
 
 First the file where the error occurred is displayed, followed by the number of line and column. The next element 
 displayed is the date and time of the error for the local timezone (to log the date and time Utc::now() is used).
@@ -68,6 +68,7 @@ using the mysql_async crate:
 ```Rust
 async fn example_fn() -> TheResult<Conn> {
 
+    //  This macro will map any of the supported crates' error to The Error
     let pool = match Pool::from_url(EnvironmentConfig::instance().get_db_url().await) {
         Ok(pool) => pool,
         Err(e) => {
@@ -75,10 +76,26 @@ async fn example_fn() -> TheResult<Conn> {
         }
     };
 
+    //  This second macro will enable you to create a new error with a custom message and 
+    // an error type, in case you don't have any error to map or is not convenient to do so
     match pool.get_conn().await {
         Ok(conn) => Ok(conn),
         Err(e) => {
-            Err(map_to_new_error!(e))
+            Err(
+                create_new_error!(
+                    SystemErrorCodes::DbConnectionError, 
+                    "Failed to connect to database"
+                )
+            );
+        }
+    }
+    
+    //  Alternatively, this macro allows another variant that only receives an error message.
+    // The error type in this case, will be defined as SystemErrorCodes::GenericError
+    match pool.get_conn().await {
+        Ok(conn) => Ok(conn),
+        Err(e) => {
+            Err(create_new_error!("Failed to connect to database"));
         }
     }
 }

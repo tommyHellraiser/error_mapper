@@ -16,3 +16,31 @@ macro_rules! map_to_new_error {
         }
     }
 }
+
+#[macro_export]
+macro_rules! create_new_error {
+    ($error_type:expr, $error_content:expr) => {
+        $crate::TheError {
+            error: $crate::TheErrorType {
+                error_type: $error_type,
+                error_content: $error_content.to_string()
+            },
+            file: None,
+            location: None,
+            datestamp: None,
+            timestamp: None
+        }
+    };
+    ($error_content:expr) => {
+        $crate::TheError {
+            error: $crate::TheErrorType {
+                error_type: $crate::SystemErrorCodes::GenericError,
+                error_content: $error_content.to_string()
+            },
+            file: None,
+            location: None,
+            datestamp: None,
+            timestamp: None
+        }
+    }
+}

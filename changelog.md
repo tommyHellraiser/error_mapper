@@ -1,3 +1,11 @@
+# v0.3.7 (2023-10-07)
+### Added
+- Added a new macro `create_new_error!` to only send the error type and content
+- Added functions to append error details after its creation
+### Modified
+- Simplified the Display output to avoid too much information displayed
+- Made every parameter of `TheError` an `Option` except for the error type and content
+
 # v0.3.6 (2023-09-30)
 - Added `new()` function for `TheError`
 - Added `From` implementation for `TheErrorType`
