@@ -1,3 +1,9 @@
+# v0.3.8 (2023-10-07)
+### Fixed
+- Fixed error in `map_to_new_error!` macro
+### Added
+- Generic ``Error`` in `SystemErrorCodes`
+
 # v0.3.7 (2023-10-07)
 ### Added
 - Added a new macro `create_new_error!` to only send the error type and content

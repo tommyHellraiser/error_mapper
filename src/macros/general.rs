@@ -9,10 +9,10 @@ macro_rules! map_to_new_error {
 
         $crate::TheError {
             error: $crate::TheErrorType::from($error),
-            file: file!().to_string(),
-            location: (line!(), column!()),
-            datestamp: chrono::Local::now().date_naive(),
-            timestamp: chrono::Local::now().time()
+            file: Some(file!().to_string()),
+            location: Some((line!(), column!())),
+            datestamp: Some(chrono::Local::now().date_naive()),
+            timestamp: Some(chrono::Local::now().time())
         }
     }
 }

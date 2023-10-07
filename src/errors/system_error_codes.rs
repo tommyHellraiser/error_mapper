@@ -21,12 +21,13 @@ pub enum SystemErrorCodes {
     Deadlock,
     DecodeError,
     Empty,
+    #[default]
+    Error,
     EnvironmentError,
     FeatureRequired,
     FormatError,
     FromRow,
     FromValue,
-    #[default]
     GenericError,
     HandleError,
     HostUnreachable,
