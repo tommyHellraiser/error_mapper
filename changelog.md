@@ -1,3 +1,8 @@
+# v0.3.9 (2023-12-28)
+### Added
+- Line logging for errors to identify where they were originated
+- Location printing in Display impl
+
 # v0.3.8 (2023-10-07)
 ### Fixed
 - Fixed error in `map_to_new_error!` macro

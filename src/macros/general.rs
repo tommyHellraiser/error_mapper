@@ -25,8 +25,8 @@ macro_rules! create_new_error {
                 error_type: $error_type,
                 error_content: $error_content.to_string()
             },
-            file: None,
-            location: None,
+            file: Some(file!().to_string()),
+            location: Some((line!(), column!())),
             datestamp: None,
             timestamp: None
         }
@@ -37,8 +37,8 @@ macro_rules! create_new_error {
                 error_type: $crate::SystemErrorCodes::GenericError,
                 error_content: $error_content.to_string()
             },
-            file: None,
-            location: None,
+            file: Some(file!().to_string()),
+            location: Some((line!(), column!())),
             datestamp: None,
             timestamp: None
         }

@@ -161,8 +161,13 @@ impl Display for TheError {
     /// previously stored, it'll be inside TheError struct.
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
 
-        write!(f, "{}: {}", self.error.error_type, self.error.error_content)
-            .expect("Couldn't display message!!");
+        if self.file.is_some() && self.location.is_some() {
+            write!(f, "{}: {} @{}: {}|{}", self.error.error_type, self.error.error_content, self.file.clone().unwrap(), self.location.unwrap().0, self.location.unwrap().1)
+                .expect("Couldn't display message!!");
+        } else {
+            write!(f, "{}: {}", self.error.error_type, self.error.error_content)
+                .expect("Couldn't display message!!");
+        }
 
         Ok(())
     }
