@@ -1,6 +1,6 @@
 [package]
 name = "error_mapper"
-version = "0.3.9"
+version = "0.3.10"
 edition = "2021"
 authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]

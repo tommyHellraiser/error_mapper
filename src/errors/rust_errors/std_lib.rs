@@ -288,6 +288,24 @@ impl From<std::string::FromUtf8Error> for TheErrorType {
     }
 }
 
+impl From<String> for TheErrorType {
+    fn from(value: String) -> Self {
+        Self {
+            error_type: SystemErrorCodes::GenericError,
+            error_content: value
+        }
+    }
+}
+
+impl From<&str> for TheErrorType {
+    fn from(value: &str) -> Self {
+        Self {
+            error_type: SystemErrorCodes::GenericError,
+            error_content: value.to_string()
+        }
+    }
+} 
+
 impl From<std::string::ParseError> for TheErrorType {
     fn from(value: std::string::ParseError) -> Self {
         Self {

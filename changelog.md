@@ -1,3 +1,7 @@
+# v0.3.10 (2024-08-16)
+### Added
+Support for String and &str to macro `map_to_new_error!`
+
 # v0.3.9 (2023-12-28)
 ### Added
 - Line logging for errors to identify where they were originated
