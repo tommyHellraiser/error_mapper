@@ -44,3 +44,26 @@ macro_rules! create_new_error {
         }
     }
 }
+
+#[macro_export]
+macro_rules! traceback {
+    ($the_error: expr, $traceback_msg: expr) => {
+        $crate::create_new_error!(
+            format!(
+                "{}; Originated in: {}",
+                $traceback_msg,
+                $the_error.to_string()
+            )
+        );
+    };
+    ($the_error: expr, $traceback_msg: expr, $error_type: expr) => {
+        $crate::create_new_error!(
+        $error_type,
+            format!(
+                "{}; Originated in: {}",
+                $traceback_msg,
+                $the_error.to_string()
+            )
+        );
+    };
+}

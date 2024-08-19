@@ -1,3 +1,6 @@
+# v0.3.11 (2024-08-19)
+Added `traceback!` macro to allow error tracing
+
 # v0.3.10 (2024-08-16)
 ### Added
 Support for String and &str to macro `map_to_new_error!`
