@@ -1,11 +1,11 @@
 [package]
 name = "error_mapper"
-version = "0.3.11"
-edition = "2021"
+version = "0.4.0"
+edition = "2024"
 authors = ["Tomas Ponce <nacho.ponce25@gmail.com>"]
 keywords = ["error", "handling", "macro", "simple"]
 description = "Simple and standardized Results and Errors handling accross all your projects"
-rust-version = "1.71.1"
+rust-version = "1.87.0"
 readme = "README.md"
 repository = "https://github.com/tommyHellraiser/error_mapper"
 categories = ["config", "data-structures", "development-tools", "rust-patterns"]
@@ -15,22 +15,22 @@ exclude = ["todo_list.md"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-web = { version = "4.4.0", features = [] }
+actix-web = { version = "4.4.0", features = [], optional = true }
 chrono = { version = "0.4.26"}
 lazy_static = "1.4.0"
-mysql_async = { version = "0.32.2", features = ["default"]}
-reqwest = "0.11.20"
-serde = "1.0.188"
-serde_json = { version = "1.0.107", features = [] }
-tokio = { version = "1.29.1", features = ["full"]}
+mysql_async = { version = "0.32.2", features = ["default"], optional = true }
+reqwest = { version = "0.11.20", optional = true }
+serde = { version = "1.0.188", optional = true }
+serde_json = { version = "1.0.107", features = [], optional = true }
+tokio = { version = "1.29.1", features = ["full"], optional = true }
 
 [features]
 full = ["mysql_async", "chrono", "tokio", "actix-web", "reqwest", "serde_json", "serde"]
-mysql_async = []
+mysql_async = ["dep:mysql_async"]
 chrono = []
-tokio = []
+tokio = ["dep:tokio"]
 no_std = []
-actix-web = []
-reqwest = []
-serde_json = []
-serde = []
+actix-web = ["dep:actix-web"]
+reqwest = ["dep:reqwest"]
+serde_json = ["dep:serde_json"]
+serde = ["dep:serde"]

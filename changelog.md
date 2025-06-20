@@ -1,3 +1,8 @@
+# v0.4.0 (2025-06-20)
+Updated to Rust edition 2024
+Updated to minimum Rust version 1.87.0
+Made several dependencies optional to reduce crate imports when no features are enabled
+
 # v0.3.11 (2024-08-19)
 Added `traceback!` macro to allow error tracing
 
